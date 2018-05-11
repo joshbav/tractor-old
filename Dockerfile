@@ -26,22 +26,6 @@ ADD sudoers /etc/sudoers
 ADD privacy /etc/sudoers.d/privacy
 ####
 
-# TOOD: DELETE WHOLE SECTION #### SETUP ROOT'S BASH PROFILE
-# For convenience we might want to start the container manually, or exec into a running instance
-# and run prman and such. If so, environment variables such as the path
-# need to be properly setup. Thus If doing a docker or dcos exec, 
-# you mush use "bash -l" as the command.
-# However we need to remember to update .bash_profile if we add/change env vars
-# TODO move all env vars to this section for easier maintenance, dupe parent
-# containers
-# ADD root-bashprofile /root/.bash_profile
-# To get this profile to be used, bash -l must be launched, so we'll
-# make it the default CMD. Note we won't use an ENTRYPOINT
-# This means we can just "docker run -it joshbav/tractor" and have the right
-# environment, such as the right path.
-# CMD bash -l
-####
-
 #### TRACTOR v2.2 (1715407)
 ADD Tractor-2.2_1715407-linuxRHEL6_gcc44icc150.x86_64.rpm /tmp
 RUN rpm -ivh /tmp/Tractor-2.2_1715407-linuxRHEL6_gcc44icc150.x86_64.rpm
