@@ -17,13 +17,14 @@
   "env": {
     "RMANTREE": "/opt/pixar/RenderManProServer-21.7",
     "PATH": "/opt/pixar/RenderManProServer-21.7/bin:/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/bin",
+    "TERM": "xterm",
     "NIMBY": "1",
     "hname": "DCOS-TRACTOR-BLADE",
     "LUCAS_TRACTOR_ENGINE": "172.31.1.206:80",
     "PIXAR_LICENSE_FILE": "9010@10.10.0.30",
     "TRACTOR_ENGINE": "10.10.0.30:8081"
   },
-  "instances": 0,
+  "instances": 1,
   "maxLaunchDelaySeconds": 3600,
   "mem": 376000,
   "gpus": 0,
