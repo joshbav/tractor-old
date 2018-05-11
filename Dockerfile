@@ -48,12 +48,23 @@ RUN rpm -ivh /tmp/Tractor-2.2_1715407-linuxRHEL6_gcc44icc150.x86_64.rpm
 RUN rm /tmp/Tractor-2.2_1715407-linuxRHEL6_gcc44icc150.x86_64.rpm
 ####
 
+### RENDERMAN v21.6
+ADD RenderManProServer-21.6_1803412-linuxRHEL6_gcc44icc150.x86_64.rpm /tmp
+RUN rpm -ivh /tmp/RenderManProServer-21.6_1803412-linuxRHEL6_gcc44icc150.x86_64.rpm
+####
+
 ### RENDERMAN v21.7
 ADD RenderManProServer-21.7_1837774-linuxRHEL6_gcc44icc150.x86_64.rpm /tmp
 RUN rpm -ivh /tmp/RenderManProServer-21.7_1837774-linuxRHEL6_gcc44icc150.x86_64.rpm
 RUN rm /tmp/RenderManProServer-21.7_1837774-linuxRHEL6_gcc44icc150.x86_64.rpm
-ENV RMANTREE=/opt/pixar/RenderManProServer-21.7
-ENV PATH=$RMANTREE/bin:$PATH
+####
+
+#### THE ENV VARS ARE NOT USED since the container orchestrator will inject the path and RMANTREE
+# which allows the same container to be used for multiple tractor versions to demo the usefulness of containers. 
+# However in production a container for each version of renderman is likely and we'd need to install the 
+# previous versions of maya and katana
+#ENV RMANTREE=/opt/pixar/RenderManProServer-21.7
+#ENV PATH=$RMANTREE/bin:$PATH
 ####
 
 #### RENDERMAN FOR MAYA 2018 v21.7
@@ -76,8 +87,8 @@ RUN rm /tmp/RenderManForKatana-katana3.0-21.7_1837774-linuxRHEL6_gcc44icc150.x86
 ####
 
 #### MISC CLEANUP
-# Clear out /tmp since yum uses it
-RUN rm -rf /tmp/*
+# Clear out /tmp's rpm files
+RUN rm -rf /tmp/*.rpm
 # Clean up yum
 # not using while developing this container: RUN yum clean all
 # not using while developing this container: RUN rm -rf /var/cache/yum
