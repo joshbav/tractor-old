@@ -12,9 +12,11 @@
       "parameters": []
     }
   },
-  "cpus": 4,
+  "cpus": 80,
   "disk": 35000,
   "env": {
+    "RMANTREE": "/opt/pixar/RenderManProServer-21.7",
+    "PATH": "/opt/pixar/RenderManProServer-21.7/bin:/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/bin",
     "NIMBY": "1",
     "hname": "DCOS-TRACTOR-BLADE",
     "LUCAS_TRACTOR_ENGINE": "172.31.1.206:80",
@@ -23,7 +25,7 @@
   },
   "instances": 0,
   "maxLaunchDelaySeconds": 3600,
-  "mem": 6000,
+  "mem": 376000,
   "gpus": 0,
   "networks": [
     {
